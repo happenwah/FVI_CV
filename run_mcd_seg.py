@@ -100,8 +100,8 @@ if __name__ == '__main__':
 	optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=0.9, weight_decay=1e-4)
 
 	if args.load:
-		model_load_dir = os.path.join(args.base_dir, 'FVI/model_{}_{}.bin'.format(args.dataset, exp_name))
-		optimizer_load_dir = os.path.join(args.base_dir, 'FVI/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
+		model_load_dir = os.path.join(args.base_dir, 'FVI_CV/model_{}_{}.bin'.format(args.dataset, exp_name))
+		optimizer_load_dir = os.path.join(args.base_dir, 'FVI_CV/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
 		model.load_state_dict(torch.load(model_load_dir))
 		optimizer.load_state_dict(torch.load(optimizer_load_dir))
 		print('Loading deterministic segmentation model..')
@@ -111,13 +111,13 @@ if __name__ == '__main__':
 		train(args.n_epochs, train_loader)
 	if args.test_mode:
 		print('Evaluating {} segmentation on test set'.format(args.model_type))
-		model_load_dir = os.path.join(args.base_dir, 'FVI/models_test/model_{}_mcd_seg_test.bin'.format(args.dataset))
+		model_load_dir = os.path.join(args.base_dir, 'FVI_CV/models_test/model_{}_mcd_seg_test.bin'.format(args.dataset))
 		model.load_state_dict(torch.load(model_load_dir))
 		error, mIOU = test(model, test_loader, num_classes, args.dataset, exp_name, plot_imgs=True, mkdir=True)
 		print('Test Accuracy: {:.5f} || Test Mean IOU: {:.5f}'.format(1. - error, mIOU))
 		np.savetxt('{}_{}_epoch_{}_test_accuracy.txt'.format(args.dataset, exp_name, -1), [1. - error])
 		np.savetxt('{}_{}_epoch_{}_test_mIOU.txt'.format(args.dataset, exp_name, -1), [mIOU])
 	if args.test_runtime_mode:
-		model_load_dir = os.path.join(args.base_dir, 'FVI/models_test/model_{}_mcd_seg_test.bin'.format(args.dataset))
+		model_load_dir = os.path.join(args.base_dir, 'FVI_CV/models_test/model_{}_mcd_seg_test.bin'.format(args.dataset))
 		model.load_state_dict(torch.load(model_load_dir))
 		run_runtime_seg(model, test_loader, exp_name, 50)

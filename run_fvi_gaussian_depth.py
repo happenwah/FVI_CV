@@ -110,8 +110,8 @@ if __name__ == '__main__':
 	optimizer = torch.optim.AdamW(FVI.parameters(), lr=args.lr, weight_decay=1e-4)
 
 	if args.load:
-		model_load_dir = os.path.join(args.base_dir, 'FVI/model_{}_{}.bin'.format(args.dataset, exp_name))
-		optimizer_load_dir = os.path.join(args.base_dir, 'FVI/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
+		model_load_dir = os.path.join(args.base_dir, 'FVI_CV/model_{}_{}.bin'.format(args.dataset, exp_name))
+		optimizer_load_dir = os.path.join(args.base_dir, 'FVI_CV/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
 		FVI.load_state_dict(torch.load(model_load_dir))
 		optimizer.load_state_dict(torch.load(optimizer_load_dir))
 		print('Loading FVI gaussian model..')
@@ -121,10 +121,10 @@ if __name__ == '__main__':
 		train(args.n_epochs, FVI)
 	if args.test_mode:
 		print('FVI gaussian on test mode')
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_{}_fvi_gaussian_test.bin'.format(args.dataset))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_{}_fvi_gaussian_test.bin'.format(args.dataset))
 		FVI.load_state_dict(torch.load(load_dir_model))
 		run_test_fvi_per_image(-1, FVI, test_set, N_test, args.dataset, exp_name, 'gaussian', mkdir=True)
 	if args.test_runtime_mode:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_{}_fvi_gaussian_test.bin'.format(args.dataset))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_{}_fvi_gaussian_test.bin'.format(args.dataset))
 		FVI.load_state_dict(torch.load(load_dir_model))
 		run_runtime_fvi(FVI, test_set, 'gaussian', exp_name)

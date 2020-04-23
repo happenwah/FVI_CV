@@ -131,7 +131,7 @@ if __name__ == '__main__':
 	optimizer = torch.optim.AdamW(FVI.parameters(), lr=args.lr, weight_decay=1e-4)
 
 	if args.load:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/model_{}_{}.bin'.format(args.dataset, exp_name))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/model_{}_{}.bin'.format(args.dataset, exp_name))
 		#load_dir_optimizer = os.path.join(args.base_dir, 'SIVI/fivi_regression_v2_img/optimizer_{}_{}.bin'.format(args.dataset, exp_name))
 		FVI.load_state_dict(torch.load(load_dir_model))
 		#optimizer.load_state_dict(torch.load(load_dir_optimizer))
@@ -141,20 +141,20 @@ if __name__ == '__main__':
 		train(args.n_epochs, FVI, optimizer)
 	if args.test_mode:
 		print('FVI {} on test mode'.format(args.likelihood))
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_fvi_{}_test.bin'.format(args.likelihood))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_fvi_{}_test.bin'.format(args.likelihood))
 		FVI.load_state_dict(torch.load(load_dir_model))
 		test_generator = torch.utils.data.DataLoader(test_set, batch_size=1, shuffle=False)
 		if args.likelihood == 'berhu':
-			load_dir_c_test = os.path.join(args.base_dir, 'FVI/models_test/c_test.txt') 
+			load_dir_c_test = os.path.join(args.base_dir, 'FVI_CV/models_test/c_test.txt') 
 			c_test = torch.FloatTensor(np.loadtxt(load_dir_c_test))
 		else:
 			c_test = None
 		run_test_fvi_per_image(-1, FVI, test_set, N_test, args.dataset, exp_name, args.likelihood, c_threshold=c_test, mkdir=True)
 	if args.test_runtime_mode:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_fvi_{}_test.bin'.format(args.likelihood))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_fvi_{}_test.bin'.format(args.likelihood))
 		FVI.load_state_dict(torch.load(load_dir_model))
 		if args.likelihood == 'berhu':
-			load_dir_c_test = os.path.join(args.base_dir, 'FVI/models_test/c_test.txt')
+			load_dir_c_test = os.path.join(args.base_dir, 'FVI_CV/models_test/c_test.txt')
 			c_test = torch.FloatTensor(np.loadtxt(load_dir_c_test))
 		else:
 			c_test = None

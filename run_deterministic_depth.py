@@ -115,8 +115,8 @@ if __name__ == '__main__':
 	optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
 
 	if args.load:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/model_{}_{}.bin'.format(args.dataset, exp_name))
-		load_dir_optimizer = os.path.join(args.base_dir,'FVI/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/model_{}_{}.bin'.format(args.dataset, exp_name))
+		load_dir_optimizer = os.path.join(args.base_dir,'FVI_CV/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
 		model.load_state_dict(torch.load(load_dir_model))
 		optimizer.load_state_dict(torch.load(load_dir_optimizer))
 		print('Loading FCDensenet 103 model..')
@@ -124,11 +124,11 @@ if __name__ == '__main__':
 	if args.training_mode:
 		train(args.n_epochs)
 	if args.test_mode:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_deterministic_{}_test.bin'.format(args.loss))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_deterministic_{}_test.bin'.format(args.loss))
 		model.load_state_dict(torch.load(load_dir_model))
 		N_test = test_set.__len__()
 		run_test_deterministic(-1, model, test_set, N_test, args.dataset, exp_name)
 	if args.test_runtime_mode:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_deterministic_{}_test.bin'.format(args.loss))
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_deterministic_{}_test.bin'.format(args.loss))
 		model.load_state_dict(torch.load(load_dir_model))
 		run_runtime_deterministic(model, test_set, exp_name)

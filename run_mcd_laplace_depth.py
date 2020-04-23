@@ -116,8 +116,8 @@ if __name__ == '__main__':
 	optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
 
 	if args.load:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/model_{}_{}.bin'.format(args.dataset, exp_name))
-		load_dir_optimizer = os.path.join(args.base_dir, 'FVI/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/model_{}_{}.bin'.format(args.dataset, exp_name))
+		load_dir_optimizer = os.path.join(args.base_dir, 'FVI_CV/optimizer_{}_{}.bin'.format(args.dataset, exp_name)) 
 		model.load_state_dict(torch.load(load_dir_model))
 		optimizer.load_state_dict(torch.load(load_dir_optimizer)) 
 		print('Loading MC Dropout model..')
@@ -125,11 +125,11 @@ if __name__ == '__main__':
 	if args.training_mode:
 		train(args.n_epochs, optimizer)
 	if args.test_mode:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_mcd_test.bin')
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_mcd_test.bin')
 		model.load_state_dict(torch.load(load_dir_model))
 		run_test_mcd(-1, model, test_set, N_test, args.dataset, exp_name, args.l1_likelihood, mkdir=True)
 	if args.test_runtime_mode:
-		load_dir_model = os.path.join(args.base_dir, 'FVI/models_test/model_mcd_test.bin')
+		load_dir_model = os.path.join(args.base_dir, 'FVI_CV/models_test/model_mcd_test.bin')
 		model.load_state_dict(torch.load(load_dir_model))
 		run_runtime_mcd_depth(model, test_set, exp_name)
 
