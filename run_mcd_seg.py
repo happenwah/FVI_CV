@@ -11,7 +11,7 @@ from lib.utils.camvid import get_camvid
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_type', type=str, default='mcd', help='Choose from mcd or deterministic')
-parser.add_argument('--batch_size', type=int, default=1)
+parser.add_argument('--batch_size', type=int, default=4)
 parser.add_argument('--batch_size_ft', type=int, default=1)
 parser.add_argument('--lr', type=float, default=1e-3)
 parser.add_argument('--randseed', type=int, default=0)
