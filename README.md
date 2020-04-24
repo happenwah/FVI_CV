@@ -1,7 +1,7 @@
 # Scalable Uncertainty for Computer Vision with Functional Variational Inference
 
 <div align="center">
-  <img src="https://github.com/happenwah/FVI_CV/fvi_diagram.png">
+  <img src="https://raw.githubusercontent.com/happenwah/FVI_CV/master/fvi_diagram.png?fbclid=IwAR0LoPUz-2Mw9rFS4hs8XsJBUZJGXTflsOxcxsaqmLtoedfTU9dURRWqw5k">
 </div>
 
 Code for [Scalable Uncertainty for Computer Visition with Functional Variational Inference](https://arxiv.org/abs/2003.03396), by [Eduardo D C Carvalho](https://twitter.com/happenwah), [Ronald Clark](http://www.ronnieclark.co.uk/), [Andrea Nicastro](https://andreanicastro.github.io/) and [Paul H J Kelly](https://www.doc.ic.ac.uk/~phjk/). To appear at [CVPR 2020](http://cvpr2020.thecvf.com/).
