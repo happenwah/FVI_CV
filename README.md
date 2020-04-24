@@ -3,7 +3,6 @@
 <div align="center">
   <img src="https://github.com/happenwah/FVI_CV/fvi_diagram.png">
 </div>
-#![fvi_diagram](https://github.com/happenwah/FVI_CV/fvi_diagram.png)
 
 Code for [Scalable Uncertainty for Computer Visition with Functional Variational Inference](https://arxiv.org/abs/2003.03396), by [Eduardo D C Carvalho](https://twitter.com/happenwah), [Ronald Clark](http://www.ronnieclark.co.uk/), [Andrea Nicastro](https://andreanicastro.github.io/) and [Paul H J Kelly](https://www.doc.ic.ac.uk/~phjk/). To appear at [CVPR 2020](http://cvpr2020.thecvf.com/).
 
