@@ -6,6 +6,15 @@
 
 Code for [Scalable Uncertainty for Computer Visition with Functional Variational Inference](https://arxiv.org/abs/2003.03396), by [Eduardo D C Carvalho](https://twitter.com/happenwah), [Ronald Clark](http://www.ronnieclark.co.uk/), [Andrea Nicastro](https://andreanicastro.github.io/) and [Paul H J Kelly](https://www.doc.ic.ac.uk/~phjk/). To appear at [CVPR 2020](http://cvpr2020.thecvf.com/).
 
+## BibTex:
+`@InProceedings{Carvalho_2020_CVPR,
+author = {Carvalho, Eduardo D. C. and Clark, Ronald and Nicastro, Andrea and Kelly, Paul H. J.},
+title = {Scalable Uncertainty for Computer Vision With Functional Variational Inference},
+booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2020}
+}`
+
 ## Pre-requisites:
 * **Download folder `/datasets`, containing [CamVid](https://github.com/alexgkendall/SegNet-Tutorial/tree/master/CamVid) and pre-processed Make3D:** https://drive.google.com/open?id=1HaEnG8smGgCzUpUUMnVxXInrBGh-rjyl
 * **Install cnn_gp package:** https://github.com/cambridge-mlg/cnn-gp
